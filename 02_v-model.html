@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>v-model</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <div>input</div>
+    <input type="text" v-model="v1"> <br>
+    {{v1}}
+    <hr>
+
+    <div>textarea</div>
+    <textarea v-model="v2" placeholder="Escreva aqui"></textarea><br>
+    {{v2}}
+    <hr>
+
+    <div>checkbox</div>
+    <input type="checkbox" v-model="v3">
+    {{v3}}
+    <hr>
+
+    <div>multiple checkboxes (array associated)</div>
+    <input type="checkbox" value="John" v-model="v4">
+    <input type="checkbox" value="Mike" v-model="v4">
+    <input type="checkbox" value="Ana" v-model="v4">
+    {{v4}}
+    <hr>
+
+    <div>radio</div>
+    <input type="radio" id="one" value="Um" v-model="v5"> 
+    <label for="one">Um</label>
+    <br>
+    <input type="radio" id="two" value="Dois" v-model="v5">
+    <label for="two">Dois</label> 
+    <br>
+    Escolhido: {{v5}}
+    <hr>
+
+
+    <div>select</div>
+    <select v-model="v6">
+      <option disabled>Escolha um item</option>
+      <option value="a">AAAA</option>
+      <option value="b">BBBB</option>
+      <option value="c">CCCC</option>
+    </select>
+    <br>
+    {{v6}}
+    <hr>
+
+    <div>select multiple</div>
+    <select multiple v-model="v7">
+      <option value="a">AAAAAAAA</option>
+      <option value="b">BBBBBBBB</option>
+      <option value="c">CCCCCCCC</option>
+    </select>
+    <br>
+    {{v7}}
+    <hr>
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        v1: null,
+        v2: null,
+        v3: null,
+        v4: [],
+        v5: null,
+        v6: null,
+        v7: []
+      }
+    })
+  </script>
+</body>
+</html>
