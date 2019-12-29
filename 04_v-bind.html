@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>v-on</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <button @click="changeImage">Change image</button>
+    <br>
+    <img v-bind:src="srcImage">
+    <br>
+    Rows <input type="number" v-model="rows">
+    Cols <input type="number" v-model="cols">
+    <br>
+    <br>
+    <textarea :cols="cols" :rows="rows"></textarea>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        srcImage: "https://i.picsum.photos/id/30/200/300.jpg",
+        imgs: [
+          "https://i.picsum.photos/id/814/200/300.jpg",  
+          "https://i.picsum.photos/id/531/200/300.jpg",  
+          "https://i.picsum.photos/id/100/200/300.jpg",  
+          "https://i.picsum.photos/id/500/200/300.jpg",  
+          "https://i.picsum.photos/id/650/200/300.jpg",  
+        ],
+        cols: 10,
+        rows: 1
+      },
+      methods: {
+        changeImage: function() {
+          var idx = Math.floor(Math.random() * 5);
+          this.srcImage = this.imgs[idx];
+        }
+      }
+    })
+  </script>
+</body>
+</html>

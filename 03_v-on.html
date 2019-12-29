@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>v-on</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="sayhi()">Say Hi</button>
+    <br>
+    <button v-on:click="incrementCount()">Increment count</button>
+    {{count}}
+    <br>
+    <select v-on:change="changeSelect($event)">
+      <option disabled>Escolha um item</option>
+      <option value="a">AAAA</option>
+      <option value="b">BBBB</option>
+      <option value="c">CCCC</option>
+    </select>
+    <br>
+    <input type="text" v-on:keyup.enter="submit" placeholder="Press Enter to submit">
+    <button v-on:click="submit">Submit</button>
+    <hr>
+    <h2>syntatic sugar v-on: -> "@:"</h2>
+    <button @click="sayhi2()">Say Hi2</button>
+    <br>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0
+      },
+      methods: {
+        sayhi: function() {
+          alert("hi");
+        },
+        incrementCount: function() {
+          this.count++;
+        },
+        changeSelect: function(event) {
+          alert("event change " + event.target.value);
+        },
+        submit: function() {
+          alert("Submit");
+        },
+        sayhi2: function() {
+          alert("hi 2");
+        }
+      }
+    })
+  </script>
+</body>
+</html>
