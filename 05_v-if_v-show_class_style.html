@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>v-if, v-show, class and style</title>
+  <script src="https://unpkg.com/vue"></script>
+  
+  <style>
+    .bordas {
+      border: solid;
+      border-width: 3px;
+    }
+
+    .cores {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" v-model="v1">v1<br>
+    <input type="checkbox" v-model="v2">v2<br>
+    <input type="checkbox" v-model="v3">v3<br>
+    <input type="checkbox" v-model="v4">v4<br>
+    <input type="checkbox" v-model="v5">v5<br>
+    <input type="checkbox" v-model="v6">v6<br>
+    Incremente para estilo alterar <input type="number" v-model="tamanhoBorda">
+    <div v-if="v1">v-if -> Mostra se check v1 for selecionado</div>
+    <div v-show="v2">v-show -> Mostra se check v2 for selecionado</div>
+    <br>
+    <div v-if="v3 && v4">v-if -> Mostra se check v3 e v4 for selecionados</div>
+    <div :class="{bordas: v5, cores: v6}">:class -> Ative v5 para bordas e v6 para cores </div>
+    <div :style="{border: 'solid', 'border-width': tamanhoBorda + 'px'}">:style -> Estilo alterado dinamicamente </div>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        v1: null,
+        v2: null,
+        v3: null,
+        v4: null,
+        v5: null,
+        v6: null,
+        tamanhoBorda: 0
+      }
+    })
+  </script>
+</body>
+</html>
