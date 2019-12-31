@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>v-if, v-show, class and style</title>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<style>
+
+  table {
+    border-collapse: collapse;
+    width: 50%; 
+    text-align: left;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th {
+    height: 50px;
+  }
+</style>
+<body>
+  <div id="app">
+    <table>
+      <tr>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Idade</th>
+      </tr>
+      <tr v-for="aluno in alunos">
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.sobrenome}}</td>
+        <td>{{aluno.idade}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        alunos: [
+          {nome: 'João', sobrenome: 'Santos', idade: 14},
+          {nome: 'Maria', sobrenome: 'Borges', idade: 16},
+          {nome: 'Silvio', sobrenome: 'Alencar', idade: 15},
+          {nome: 'Joaquim', sobrenome: 'Ferreira', idade: 14}
+        ]
+      }
+    })
+  </script>
+</body>
+</html>
