@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>components</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="07_component_tabela_aluno.js"></script>
+</head>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 50%; 
+    text-align: left;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th {
+    height: 50px;
+  }
+</style>
+<body>
+  <div id="app">
+    <div class="form">
+      <div>
+        <label for="nome">Nome do Aluno</label>
+        <input id="nome" v-model="nome" type="text">
+      </div>
+      <div>
+        <label for="sobrenome">Sobrenome</label>
+        <input id="sobrenome" v-model="sobrenome" type="text">
+      </div>
+      <div>
+          <label for="idade">Idade</label>
+          <input id="idade" @keyup.enter="inserir_aluno()" v-model="idade" type="text">
+      </div>
+    </div>
+    <button @click="inserir_aluno()">Inserir aluno</button>
+    <br/><br/>
+    <tabela-aluno :alunos="alunos"></tabela-aluno>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        nome: null,
+        sobrenome: null,
+        idade: null,
+        alunos: [
+          {nome: 'João', sobrenome: 'Santos', idade: 14},
+          {nome: 'Maria', sobrenome: 'Borges', idade: 16},
+          {nome: 'Silvio', sobrenome: 'Alencar', idade: 15},
+          {nome: 'Joaquim', sobrenome: 'Ferreira', idade: 14}
+        ]
+      },
+      methods: {
+        inserir_aluno: function() {
+          this.alunos.push({nome: this.nome, sobrenome: this.sobrenome, idade: this.idade});
+          this.nome = this.sobrenome = this.idade = null;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
