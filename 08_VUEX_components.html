@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>components</title>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/vuex"></script>
+  <script src="VUEX_store.js"></script>
+  <script src="VUEX_component_tabela_aluno.js"></script>
+  <script src="VUEX_component_novo_aluno.js"></script>
+</head>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 50%; 
+    text-align: left;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th {
+    height: 50px;
+  }
+</style>
+<body>
+  <div id="app">
+    <novo-aluno></novo-aluno>
+    <br/><br/>
+    <tabela-aluno></tabela-aluno>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+      },
+      methods: {
+      },
+      store: window.STORE
+    })
+  </script>
+</body>
+</html>
