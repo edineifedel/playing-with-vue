@@ -27,7 +27,7 @@ Vue.component('tabela-aluno', {
   `,
   methods: {
     remover_aluno: function(aluno) {
-      this.$store.commit("remover_aluno", aluno);
+      this.$store.commit('remover_aluno', aluno);
     }
   }
 })
