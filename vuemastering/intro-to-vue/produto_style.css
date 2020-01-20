@@ -87,3 +87,11 @@ body {
     color: #16C0B0;
     text-decoration: underline;
   }
+
+  ul {
+    list-style-type: none;
+  }
+
+  p.out-of-stock {
+    text-decoration: line-through;
+  }
