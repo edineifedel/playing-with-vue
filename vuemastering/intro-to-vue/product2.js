@@ -10,7 +10,12 @@ var app = new Vue({
         this.cart.push(id);
       },
       removeFromCart(id) {
-        
+        this.cart.splice(this.cart.indexOf(id), 1);
+      }
+    },
+    computed: {
+      isCarEmpty() {
+        return this.cart.length == 0;
       }
     }
   })

@@ -1,5 +1,5 @@
 Vue.component('product', {
-    props: ['premium'],
+    props: ['premium', 'isCarEmpty'],
     data() {
         return {
             product: 'Socks',
@@ -20,7 +20,8 @@ Vue.component('product', {
                     image: 'vmSocks-blue.jpg',
                     quantity: 10
                 }
-            ]
+            ],
+            reviews: []
         }
     },
     methods: {
@@ -28,10 +29,15 @@ Vue.component('product', {
             this.$emit('add-to-cart', this.variants[this.selectedVariant].id);
         },
         removeFromCart() {
-            this.$emit('remove-from-cart', this.variants[this.selectedVariant].id);
+            if (!this.isCarEmpty) {
+                this.$emit('remove-from-cart', this.variants[this.selectedVariant].id);
+            }
         },
         updateProduct(index) {
             this.selectedVariant = index;
+        },
+        addReview(productReview) {
+            this.reviews.push(productReview);
         }
     },
     computed: {
@@ -53,7 +59,6 @@ Vue.component('product', {
             <div class="product-image">
                 <img :src="image" />
             </div>
-            {{ cart }}
             <div class="product-info">
                 <h1>{{ product }}</h1>
                 <p v-if="inventory > 100">In Stock</p>
@@ -71,7 +76,7 @@ Vue.component('product', {
                     <li>{{size}}</li>
                 </ul> -->
                 Colors:
-                <ul>
+                <ul class="item-box">
                     <li v-for="(variant, index) in variants" 
                         @mouseover="updateProduct(index)" 
                         class="color-box"
@@ -84,9 +89,21 @@ Vue.component('product', {
                     :class="{ disabledButton: !inStock }" 
                     :disabled="!inStock">Add to Cart</button>
                 <button @click="removeFromCart"
-                    :class="{ disabledButton: !inStock }" 
-                    :disabled="!inStock">Remove Cart</button>
+                    :class="{ disabledButton: isCarEmpty }" 
+                    :disabled="isCarEmpty">Remove Cart</button>
                 <a :href="link" target="_blank">More products like this</a>
+                <div>
+                    <h2>Reviews</h2>
+                    <p v-if="!reviews.length">There are no reviews yet.</p>
+                    <ul>
+                        <li v-for="review in reviews">
+                            <p>{{ review.name }}</p>
+                            <p>Rating: {{ review.rating }}</p>
+                            <p>{{ review.review }}</p>
+                        </li>
+                    </ul>
+               </div>
+               <product-review @add-review="addReview"></product-review>
             </div>
         </div>
     `

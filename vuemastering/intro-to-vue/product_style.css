@@ -33,6 +33,10 @@ body {
     width: 50%;
   }
   
+  .item-box {
+      list-style-type: none;
+  }
+  
   .color-box {
     width: 40px;
     height: 40px;
@@ -86,10 +90,6 @@ body {
   .activeTab {
     color: #16C0B0;
     text-decoration: underline;
-  }
-
-  ul {
-    list-style-type: none;
   }
 
   p.out-of-stock {
